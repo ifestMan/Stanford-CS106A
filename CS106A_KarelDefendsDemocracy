@@ -1,0 +1,49 @@
+/*
+ * File: KarelDefendsDemocracy.java
+ * --------------------------------
+ * Clear out the hanging Chads, if any exist.
+ */
+
+import stanford.karel.*;
+
+public class CollectNewspaperKarel extends SuperKarel {
+	public void run() {
+	move();
+	checkBallot();
+	}
+	private void checkBallot() {
+		while (facingEast()) {
+			if (beepersPresent()) {
+				moveToNext();
+		}	if (noBeepersPresent()) {
+				clearBeepers();
+		}
+		}
+	}
+	private void moveToNext() {
+		for (int i=0; i<2; i++) {
+			move();
+		}
+	}
+	private void clearBeepers() {
+		turnRight();
+		while (facingSouth()) {
+			if (frontIsClear()) {
+				move();
+		}	if (frontIsBlocked()) {
+			turnAround();
+			pickBeeper();
+	}	while (facingNorth()) {
+			if (frontIsClear()) {
+				move();
+	}		if (frontIsBlocked()) {
+				turnAround();
+				pickBeeper();
+				move();
+				turnLeft();
+				moveToNext();
+			}
+	}
+		}
+	}
+}
