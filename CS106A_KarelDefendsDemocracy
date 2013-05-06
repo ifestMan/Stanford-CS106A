@@ -23,6 +23,7 @@ public class CollectNewspaperKarel extends SuperKarel {
 	private void moveToNext() {
 		for (int i=0; i<2; i++) {
 			move();
+			checkBallot();
 		}
 	}
 	private void clearBeepers() {
